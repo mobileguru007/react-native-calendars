@@ -75,6 +75,8 @@ export interface CalendarProps extends CalendarHeaderProps, DayProps {
   showInMiddle?: boolean;
   /** Arrow Size */
   arrowSize: number;
+  /** Arrow Background */
+  arrowBackground: any;
 }
 
 interface CalendarState {
@@ -105,6 +107,8 @@ class Calendar extends Component<CalendarProps, CalendarState> {
     firstDay: PropTypes.number,
     /** Arrow Size */
     arrowSize: PropTypes.number,
+    /** Arrow background */
+    arrowBackground: PropTypes.any,
     /** Collection of dates that have to be marked. Default = {} */
     markedDates: PropTypes.object,
     /** Display loading indicator. Default = false */
@@ -276,7 +280,8 @@ class Calendar extends Component<CalendarProps, CalendarState> {
     const prevImage = require('./img/previous.png')
     const nextImage = require('./img/next.png');
 
-    const { arrowSize } = this.props;
+    let { arrowSize, arrowBackground } = this.props;
+    arrowSize = arrowSize ? arrowSize : 20;
     return (
       <View style={{ flexDirection: 'row' }}>
 
@@ -285,7 +290,7 @@ class Calendar extends Component<CalendarProps, CalendarState> {
             onPress={() => this.addMonth(-1)}
             hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
           >
-            <Image source={prevImage} style={{ width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
+            <Image source={prevImage} style={{ backgroundColor: arrowBackground ? arrowBackground : 'white', width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
           </TouchableOpacity>
         </View>
 
@@ -299,7 +304,7 @@ class Calendar extends Component<CalendarProps, CalendarState> {
             onPress={() => this.addMonth(1)}
             hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
           >
-            <Image source={nextImage} style={{ width: arrowSize, height: arrowSize, marginEnd: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
+            <Image source={nextImage} style={{ backgroundColor: 'white', width: arrowSize, height: arrowSize, marginEnd: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
           </TouchableOpacity>
         </View>
 
