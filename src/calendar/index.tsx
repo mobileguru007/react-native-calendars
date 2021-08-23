@@ -273,8 +273,8 @@ class Calendar extends Component<CalendarProps, CalendarState> {
   }
 
   renderMonthWithArrow() {
-    const prevImage = require('../img/previous.png')
-    const nextImage = require('../img/next.png');
+    const prevImage = require('./img/previous.png')
+    const nextImage = require('./img/next.png');
 
     const { arrowSize } = this.props;
     return (
