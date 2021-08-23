@@ -41,6 +41,8 @@ interface Props {
   onPressArrowRight?: (method: () => void, month?: XDate) => void;
   /** Disable left arrow */
   disableArrowLeft?: boolean;
+  /** Show arrows in the middle of calendar */
+  showInMiddle?: boolean;
   /** Disable right arrow */
   disableArrowRight?: boolean;
   /** Apply custom disable color to selected day indexes */
@@ -72,6 +74,8 @@ class CalendarHeader extends Component<Props> {
     hideDayNames: PropTypes.bool,
     /** Hide month navigation arrows. Default = false */
     hideArrows: PropTypes.bool,
+    /** Show arrows in the middle of calendar */
+    showInMiddle: PropTypes.bool,
     /** Replace default arrows with custom ones (direction can be 'left' or 'right') */
     renderArrow: PropTypes.func,
     /** Handler which gets executed when press arrow icon left. It receive a callback can go back month */
@@ -193,8 +197,8 @@ class CalendarHeader extends Component<Props> {
   };
 
   renderArrow(direction: Direction) {
-    const {hideArrows, disableArrowLeft, disableArrowRight, renderArrow, testID} = this.props;
-    if (hideArrows) {
+    const {hideArrows, showInMiddle, disableArrowLeft, disableArrowRight, renderArrow, testID} = this.props;
+    if (hideArrows || showInMiddle) {
       return <View />;
     }
     const isLeft = direction === 'left';
