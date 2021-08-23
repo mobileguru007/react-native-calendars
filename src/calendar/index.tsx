@@ -281,7 +281,7 @@ class Calendar extends Component<CalendarProps, CalendarState> {
     const nextImage = require('./img/next.png');
 
     let { arrowSize, arrowBackground } = this.props;
-    arrowSize = arrowSize ? arrowSize : 20;
+    arrowSize = arrowSize ? arrowSize : 24;
     return (
       <View style={{ flexDirection: 'row' }}>
 
@@ -290,7 +290,7 @@ class Calendar extends Component<CalendarProps, CalendarState> {
             onPress={() => this.addMonth(-1)}
             hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
           >
-            <Image source={prevImage} style={{ backgroundColor: arrowBackground ? arrowBackground : 'white', width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
+            <Image source={prevImage} style={{ backgroundColor: arrowBackground ? arrowBackground : 'white', width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, padding: 4, }} />
           </TouchableOpacity>
         </View>
 
