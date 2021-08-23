@@ -278,29 +278,32 @@ class Calendar extends Component<CalendarProps, CalendarState> {
 
     const { arrowSize } = this.props;
     return (
-    <View style={{ flexDirection: 'row' }}>
-      
-      <View style={{ justifyContent: 'center' }}>
-        <TouchableOpacity
-          onPress={() => this.addMonth(-1)}
-          hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
-        >
-          <Image source={prevImage} style={{ width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
-        </TouchableOpacity>
-      </View>
+      <View style={{ flexDirection: 'row' }}>
 
-      {this.renderMonth()}
-      
-      <View style={{ justifyContent: 'center' }}>
-        <TouchableOpacity
-          onPress={() => this.addMonth(1)}
-          hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
-        >
-          <Image source={nextImage} style={{ width: arrowSize, height: arrowSize, marginEnd: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
-        </TouchableOpacity>
-      </View>
+        <View style={{ justifyContent: 'center' }}>
+          <TouchableOpacity
+            onPress={() => this.addMonth(-1)}
+            hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
+          >
+            <Image source={prevImage} style={{ width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
+          </TouchableOpacity>
+        </View>
 
-    </View>)
+        <View style={{ flex: 1 }}>
+          {this.renderMonth()}
+        </View>
+
+
+        <View style={{ justifyContent: 'center' }}>
+          <TouchableOpacity
+            onPress={() => this.addMonth(1)}
+            hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
+          >
+            <Image source={nextImage} style={{ width: arrowSize, height: arrowSize, marginEnd: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
+          </TouchableOpacity>
+        </View>
+
+      </View>)
   }
   renderMonth() {
     const { currentMonth } = this.state;
