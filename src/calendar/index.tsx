@@ -307,6 +307,7 @@ class Calendar extends Component<CalendarProps, CalendarState> {
               marginStart: -(arrowCircleSize / 2), 
               borderRadius: arrowCircleSize / 2, 
               alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <Image
@@ -336,6 +337,7 @@ class Calendar extends Component<CalendarProps, CalendarState> {
               marginEnd: -(arrowCircleSize / 2), 
               borderRadius: arrowCircleSize / 2, 
               alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <Image
