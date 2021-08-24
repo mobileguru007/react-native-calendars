@@ -74,9 +74,13 @@ export interface CalendarProps extends CalendarHeaderProps, DayProps {
   /** Show arrows in the middle of calendar */
   showInMiddle?: boolean;
   /** Arrow Size */
-  arrowSize: number;
+  arrowSize?: number;
   /** Arrow Background */
-  arrowBackground: any;
+  arrowBackground?: any;
+  /** Arrow color */
+  arrowTint?: any;
+  /** Arrow circle size */
+  arrowCircleSize?: number;
 }
 
 interface CalendarState {
@@ -109,6 +113,10 @@ class Calendar extends Component<CalendarProps, CalendarState> {
     arrowSize: PropTypes.number,
     /** Arrow background */
     arrowBackground: PropTypes.any,
+    /** Arrow color */
+    arrowTint: PropTypes.any,
+    /** Arrow circle size */
+    arrowCircleSize: PropTypes.number,
     /** Collection of dates that have to be marked. Default = {} */
     markedDates: PropTypes.object,
     /** Display loading indicator. Default = false */
@@ -280,8 +288,10 @@ class Calendar extends Component<CalendarProps, CalendarState> {
     const prevImage = require('./img/previous.png')
     const nextImage = require('./img/next.png');
 
-    let { arrowSize, arrowBackground, arrowTint } = this.props;
-    arrowSize = arrowSize ? arrowSize : 24;
+    let { arrowSize, arrowCircleSize, arrowBackground, arrowTint } = this.props;
+    arrowSize = arrowSize ? arrowSize : 16;
+    arrowCircleSize = arrowCircleSize ? arrowCircleSize : 32;
+    arrowBackground = arrowBackground ? arrowBackground : 'white';
     arrowTint = arrowTint ? arrowTint : 'black'
     return (
       <View style={{ flexDirection: 'row' }}>
@@ -290,11 +300,22 @@ class Calendar extends Component<CalendarProps, CalendarState> {
           <TouchableOpacity
             onPress={() => this.addMonth(-1)}
             hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
-            style={{ backgroundColor: arrowBackground ? arrowBackground : 'white', width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, padding: 4, }} 
+            style={{ 
+              backgroundColor: arrowBackground, 
+              width: arrowCircleSize, 
+              height: arrowCircleSize, 
+              marginStart: -(arrowCircleSize / 2), 
+              borderRadius: arrowCircleSize / 2, 
+              alignItems: 'center',
+            }}
           >
-            <Image 
-              source={prevImage} 
-              style={{ width: '100%', height: '100%', tintColor: arrowTint, }}
+            <Image
+              source={prevImage}
+              style={{ 
+                width: arrowSize, 
+                height: arrowSize, 
+                tintColor: arrowTint, 
+              }}
             />
           </TouchableOpacity>
         </View>
@@ -308,11 +329,22 @@ class Calendar extends Component<CalendarProps, CalendarState> {
           <TouchableOpacity
             onPress={() => this.addMonth(1)}
             hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
-            style={{ backgroundColor: arrowBackground ? arrowBackground : 'white', width: arrowSize, height: arrowSize, marginEnd: -(arrowSize / 2), borderRadius: arrowSize / 2, padding: 4, }} 
+            style={{ 
+              backgroundColor: arrowBackground, 
+              width: arrowCircleSize, 
+              height: arrowCircleSize, 
+              marginEnd: -(arrowCircleSize / 2), 
+              borderRadius: arrowCircleSize / 2, 
+              alignItems: 'center',
+            }}
           >
-            <Image 
-              source={nextImage} 
-              style={{ width: '100%', height: '100%', tintColor: arrowTint, }}
+            <Image
+              source={nextImage}
+              style={{ 
+                width: arrowSize, 
+                height: arrowSize, 
+                tintColor: arrowTint, 
+              }}
             />
           </TouchableOpacity>
         </View>
