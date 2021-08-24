@@ -289,8 +289,10 @@ class Calendar extends Component<CalendarProps, CalendarState> {
           <TouchableOpacity
             onPress={() => this.addMonth(-1)}
             hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
+            style={{ backgroundColor: arrowBackground ? arrowBackground : 'white', width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, padding: 4, }} 
           >
-            <Image source={prevImage} style={{ backgroundColor: arrowBackground ? arrowBackground : 'white', width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, padding: 4, }} />
+            <Image source={prevImage} style={{ 
+              width: '100%', height: '100%', }} />
           </TouchableOpacity>
         </View>
 
@@ -303,8 +305,10 @@ class Calendar extends Component<CalendarProps, CalendarState> {
           <TouchableOpacity
             onPress={() => this.addMonth(1)}
             hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
+            style={{ backgroundColor: arrowBackground ? arrowBackground : 'white', width: arrowSize, height: arrowSize, marginStart: -(arrowSize / 2), borderRadius: arrowSize / 2, padding: 4, }} 
           >
-            <Image source={nextImage} style={{ backgroundColor: 'white', width: arrowSize, height: arrowSize, marginEnd: -(arrowSize / 2), borderRadius: arrowSize / 2, }} />
+            <Image source={nextImage} style={{ 
+              width: '100%', height: '100%', }} />
           </TouchableOpacity>
         </View>
 
